@@ -6,9 +6,9 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
-sys.path.insert(0,os.path.dirname(os.getcwd()))
 import check_status
 
+sys.path.insert(0,os.path.dirname(os.getcwd()))
 
 url = check_status.url()
 
@@ -21,8 +21,10 @@ receivers = ['user1@xxx','user2@xxx']
 
 #邮件内容
 message = MIMEText('URL检测失败 :\n%s'%url,'plain','utf-8')
-message['From'] = mail_user
-message['To'] = Header('user1@xxx','user2@xxx')
+#对应邮件的显示标题
+message['From'] = Header("xx告警",'utf-8')
+#对应邮件标题的收件人
+message['To'] = Header('user组','utf-8')
 
 #邮件标题
 subject = '邮件告警'
